@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "articolos",
+  "info": {
+    "singularName": "articolo",
+    "pluralName": "articolos",
+    "displayName": "Articolo",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Content": {
+      "type": "richtext"
+    },
+    "Cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Description": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "Highlights": {
+      "type": "boolean"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "articolos"
+    }
+  }
+}
