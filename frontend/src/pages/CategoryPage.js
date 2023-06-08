@@ -14,13 +14,17 @@ function CategoryPage() {
     const [articles, setArticles] = useState([]);
     const [pagination, setPagination] = useState({});
     const [categories, setCategories] = useState([]);
-    const [, setSelectedCategory] = useState(null);
+    const [categoryId, setCategoryId] = useState(window.location.pathname.split('/')[2] || null);
 
-    const categoryIdString = window.location.pathname.split('/')[2];
-    const categoryId = parseInt(categoryIdString);
 
     useEffect(() => {
-        axios.get(`http://localhost:1337/api/articolos?populate=*&filters[category][id]=${categoryId}&pagination[page]=${currentPage}&pagination[pageSize]=${articlesPerPage}`)
+        let apiUrl = `http://localhost:1337/api/articolos?populate=*&pagination[page]=${currentPage}&pagination[pageSize]=${articlesPerPage}`;
+
+        if (categoryId) {
+            apiUrl += `&filters[category][id]=${categoryId}`;
+        }
+
+        axios.get(apiUrl)
             .then((response) => {
                 console.log(response.data);
                 setArticles(response.data.data);
@@ -32,9 +36,10 @@ function CategoryPage() {
 
     }, [currentPage, articlesPerPage, categoryId]);
 
+
     const handleCategoryChange = (newCategoryId) => {
         setCurrentPage(1);
-        setSelectedCategory(newCategoryId);
+        setCategoryId(newCategoryId);
     };
 
     useEffect(() => {
@@ -64,25 +69,27 @@ function CategoryPage() {
     return (
         <div>
             {/* posts */}
-            <section class="flex items-center w-full">
-                <div class="relative items-center w-full px-5 pt-32 mx-auto md:px-12 lg:px-20 max-w-7xl">
+            <section className="flex items-center w-full">
+                <div className="relative items-center w-full px-5 pt-32 mx-auto md:px-12 lg:px-20 max-w-7xl">
                     {/* categories */}
-                    <section class="max-w-screen-xl px-4 sm:px-6 mx-auto relative">
-                        <div class="w-fit mx-auto text-sm font-medium text-center text-gray-700 ">
-                            <ul class="flex flex-wrap justify-around -mb-px">
-                                <Link to={`/archive`}>
-                                    <li>
-                                        <div class="cursor-pointer inline-block px-6 py-4 border-b border-gray-400 hover:text-gray-600 hover:shadow-lg duration-150">
-                                            All
-                                        </div>
-                                    </li>
-                                </Link>
+                    <section className="max-w-screen-xl px-4 sm:px-6 mx-auto relative">
+                        <div className="w-fit mx-auto text-sm font-medium text-center text-gray-700 ">
+                            <ul className="flex flex-wrap justify-around -mb-px">
+                                <li>
+                                    <div
+                                        onClick={() => handleCategoryChange(null)}
+                                        className={`cursor-pointer inline-block px-6 py-4 border-b border-gray-400 hover:shadow-lg duration-150 ${categoryId === null ? 'text-[#FA2200] shadow-lg border-b !border-[#FA2200]' : ''
+                                            }`}
+                                    >
+                                        All
+                                    </div>
+                                </li>
                                 {categories.map((category) => (
                                     <li key={category.id}>
                                         <Link to={`/category/${category.id}`}>
                                             <div
                                                 onClick={() => handleCategoryChange(category.id)}
-                                                className={`cursor-pointer inline-block px-6 py-4 border-b border-gray-400 hover:shadow-lg duration-150 ${categoryId === category.id ? 'text-[#FA2200] shadow-lg border-b border-[#FA2200]' : ''
+                                                className={`cursor-pointer inline-block px-6 py-4 border-b border-gray-400 hover:shadow-lg duration-150 ${categoryId === category.id ? 'text-[#FA2200] shadow-lg border-b !border-[#FA2200]' : ''
                                                     }`}
                                             >
                                                 {category.attributes.Title}
@@ -90,12 +97,12 @@ function CategoryPage() {
                                         </Link>
                                     </li>
                                 ))}
-
-
                             </ul>
                         </div>
                     </section>
-                    <div data-aos="fade-up" data-aos-duration="500" class="grid grid-cols-1 gap-6 py-12 md:grid-cols-3">
+
+                    {/* posts */}
+                    <div data-aos="fade-up" data-aos-duration="500" className="grid grid-cols-1 gap-6 py-12 md:grid-cols-3">
                         {articles.slice(0, 6).map((article) => (
                             <div key={article.id}>
                                 <figure className="group">
@@ -128,27 +135,27 @@ function CategoryPage() {
                 </div>
             </section>
             {/* pagination */}
-            <section class="mx-auto w-fit">
-                <div class="items-center px-8 mx-auto lg:px-16 md:px-12">
-                    <div class="justify-center w-full lg:p-10 max-auto">
-                        <div class="flex items-center justify-between sm:px-6">
-                            <div class="flex items-center justify-between flex-1">
+            <section className="mx-auto w-fit">
+                <div className="items-center px-8 mx-auto lg:px-16 md:px-12">
+                    <div className="justify-center w-full lg:p-10 max-auto">
+                        <div className="flex items-center justify-between sm:px-6">
+                            <div className="flex items-center justify-between flex-1">
                                 <div>
-                                    <nav class="relative z-0 inline-flex lg:gap-2 lg:-space-x-px" aria-label="Pagination">
-                                        <nav class="relative z-0 inline-flex lg:gap-2 lg:-space-x-px" aria-label="Pagination">
+                                    <nav className="relative z-0 inline-flex lg:gap-2 lg:-space-x-px" aria-label="Pagination">
+                                        <nav className="relative z-0 inline-flex lg:gap-2 lg:-space-x-px" aria-label="Pagination">
                                             <button
                                                 disabled={!canGoBack}
                                                 onClick={() => changePage(1)}
-                                                class="relative inline-flex items-center px-4 py-2 text-sm font-light text-gray-500 rounded-lg hover:bg-gray-50"
+                                                className="relative inline-flex items-center px-4 py-2 text-sm font-light text-gray-500 rounded-lg hover:bg-gray-50"
                                             >
                                                 First
                                             </button>
                                             <button
                                                 disabled={!canGoBack}
                                                 onClick={() => changePage(currentPage - 1)}
-                                                class="relative inline-flex items-center px-4 py-2 text-sm font-light text-gray-500 rounded-lg hover:bg-gray-50"
+                                                className="relative inline-flex items-center px-4 py-2 text-sm font-light text-gray-500 rounded-lg hover:bg-gray-50"
                                             >
-                                                <svg class="w-5 h-5 md hydrated" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="48">
+                                                <svg className="w-5 h-5 md hydrated" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="48">
                                                     <path d="M561-240 320-481l241-241 43 43-198 198 198 198-43 43Z" />
                                                 </svg>
                                             </button>
@@ -156,7 +163,7 @@ function CategoryPage() {
                                                 <button
                                                     key={i}
                                                     onClick={() => changePage(startPage + i)}
-                                                    class={`relative inline-flex items-center px-4 py-2 text-sm font-light text-gray-500 rounded-lg hover:bg-gray-50 ${currentPage === startPage + i ? 'active-page-class' : ''}`}
+                                                    className={`relative inline-flex items-center px-4 py-2 text-sm font-light text-gray-500 rounded-lg hover:bg-gray-50 ${currentPage === startPage + i ? 'active-page-class' : ''}`}
                                                 >
                                                     {startPage + i}
                                                 </button>
@@ -164,16 +171,16 @@ function CategoryPage() {
                                             <button
                                                 disabled={!canGoForward}
                                                 onClick={() => changePage(currentPage + 1)}
-                                                class="relative inline-flex items-center px-4 py-2 text-sm font-light text-gray-500 rounded-lg hover:bg-gray-50"
+                                                className="relative inline-flex items-center px-4 py-2 text-sm font-light text-gray-500 rounded-lg hover:bg-gray-50"
                                             >
-                                                <svg class="w-5 h-5 md hydrated" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48">
+                                                <svg className="w-5 h-5 md hydrated" xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 -960 960 960" width="48">
                                                     <path d="m375-240-43-43 198-198-198-198 43-43 241 241-241 241Z" />
                                                 </svg>
                                             </button>
                                             <button
                                                 disabled={!canGoForward}
                                                 onClick={() => changePage(pagination.pageCount)}
-                                                class="relative inline-flex items-center px-4 py-2 text-sm font-light text-gray-500 rounded-lg hover:bg-gray-50"
+                                                className="relative inline-flex items-center px-4 py-2 text-sm font-light text-gray-500 rounded-lg hover:bg-gray-50"
                                             >
                                                 Last
                                             </button>

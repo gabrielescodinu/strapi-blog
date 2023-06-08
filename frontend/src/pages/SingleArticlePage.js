@@ -36,7 +36,7 @@ function ArticlePage() {
                     <section>
                         <div className="flex flex-col justify-center pt-32 relative">
                             <section>
-                                <div className="flex flex-col justify-center flex-1 px-8 py-8 md:px-12 lg:flex-none lg:px-24">
+                                <div className="flex flex-col justify-center flex-1 py-8 md:px-12 lg:flex-none lg:px-24">
                                     <div>
                                         <div className="relative overflow-hidden">
                                             <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -70,7 +70,7 @@ function ArticlePage() {
                         </div>
                     </section>
                     <div>
-                        <div className="mx-auto max-w-screen-lg px-4 md:px-8">
+                        <div className="mx-auto max-w-screen-lg px-4 md:px-8 mt-8">
                             <ReactMarkdown>{article.attributes.Content}</ReactMarkdown>
                         </div>
                     </div>
@@ -107,7 +107,7 @@ function ArticlePage() {
                                 ))}
                             </div>
                             <div className="text-center mt-8 w-fit mx-auto">
-                                <Link to={`/archive`}>
+                                <Link to={`/categories`}>
                                     <div className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-[#FA2200] hover:bg-gray-700"> Discover more </div>
                                 </Link>
                             </div>

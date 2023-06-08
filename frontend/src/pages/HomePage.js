@@ -21,7 +21,7 @@ function HomePage() {
 
                 let filteredArticles;
                 if (selectedCategory === null) {
-                    filteredArticles = response.data.data; // mostra tutti gli articoli se non è selezionata alcuna categoria
+                    filteredArticles = response.data.data;
                 } else {
                     filteredArticles = response.data.data.filter(article => article.attributes.category && article.attributes.category.data && article.attributes.category.data.attributes.Title === selectedCategory);
                 }
@@ -98,12 +98,12 @@ function HomePage() {
             </section>
 
             {/* categories */}
-            <section data-aos="fade-up" class="max-w-screen-xl px-4 sm:px-6 mx-auto relative">
-                <div class="w-fit mx-auto text-sm font-medium text-center text-gray-700 ">
-                    <ul class="flex flex-wrap justify-around -mb-px">
+            <section data-aos="fade-up" className="max-w-screen-xl px-4 sm:px-6 mx-auto relative">
+                <div className="w-fit mx-auto text-sm font-medium text-center text-gray-700 ">
+                    <ul className="flex flex-wrap justify-around -mb-px">
                         <li>
                             <div
-                                className={`cursor-pointer inline-block px-6 py-4 border-b border-gray-400 hover:shadow-lg duration-150 ${selectedCategory === null ? 'text-[#FA2200] shadow-lg border-b border-[#FA2200]' : ''
+                                className={`cursor-pointer inline-block px-6 py-4 border-b border-gray-400 hover:shadow-lg duration-150 ${selectedCategory === null ? 'text-[#FA2200] shadow-lg border-b !border-[#FA2200]' : ''
                                     }`}
                                 onClick={() => setSelectedCategory(null)}
                             >
@@ -113,7 +113,7 @@ function HomePage() {
                         {categories.map((category) => (
                             <li key={category.id}>
                                 <div
-                                    className={`cursor-pointer inline-block px-6 py-4 border-b border-gray-400 hover:shadow-lg duration-150 ${selectedCategory === category.attributes.Title ? 'text-[#FA2200] shadow-lg border-b border-[#FA2200]' : ''
+                                    className={`cursor-pointer inline-block px-6 py-4 border-b border-gray-400 hover:shadow-lg duration-150 ${selectedCategory === category.attributes.Title ? 'text-[#FA2200] shadow-lg border-b !border-[#FA2200]' : ''
                                         }`}
                                     onClick={() => setSelectedCategory(category.attributes.Title)}
                                 >
@@ -159,7 +159,7 @@ function HomePage() {
 
                     </div>
                     <div className="text-center mt-8 w-fit mx-auto">
-                        <Link to={`/archive`}>
+                        <Link to={`/categories`}>
                             <div className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 shadow-md md:w-auto bg-[#FA2200] hover:bg-gray-700"> Discover more </div>
                         </Link>
                     </div>
