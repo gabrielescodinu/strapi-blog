@@ -70,13 +70,17 @@ function ArticlePage() {
                         </div>
                     </section>
                     <div>
-                        <div className="mx-auto max-w-screen-lg px-4 md:px-8 mt-8">
+                        <div className="mx-auto max-w-screen-lg px-4 md:px-8 mt-4 article-content">
                             <ReactMarkdown>{article.attributes.Content}</ReactMarkdown>
                         </div>
                     </div>
 
+                    {/* correlated */}
                     <section className="flex items-center w-full">
                         <div className="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-20 max-w-7xl">
+                            <div>
+                                <p className="font-bold text-3xl text-gray-800 text-center"> Correlated Articles </p>
+                            </div>
                             <div className="grid grid-cols-1 gap-6 py-12 md:grid-cols-3">
                                 {articles.filter((item) => item.id !== article.id).slice(0, 3).map((item) => (
                                     <div key={item.id}>

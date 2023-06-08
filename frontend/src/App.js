@@ -6,6 +6,7 @@ import SingleArticlePage from './pages/SingleArticlePage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollTop from './components/ScrollTop';
+import './App.css';
 
 function App() {
   return (
@@ -22,10 +23,7 @@ function App() {
         <Footer />
       </div>
     </Router>
-
-
   );
-
 }
 
 export default App;

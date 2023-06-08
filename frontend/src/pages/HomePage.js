@@ -16,7 +16,6 @@ function HomePage() {
     useEffect(() => {
         axios.get('http://localhost:1337/api/articolos/?populate=*&sort=publishedAt:DESC')
             .then((response) => {
-                console.log(response.data);
                 setArticles(response.data.data);
 
                 let filteredArticles;
@@ -26,7 +25,6 @@ function HomePage() {
                     filteredArticles = response.data.data.filter(article => article.attributes.category && article.attributes.category.data && article.attributes.category.data.attributes.Title === selectedCategory);
                 }
                 setFilteredArticles(filteredArticles);
-                console.log(filteredArticles);
             })
             .catch((error) => {
                 console.log(error);
@@ -37,7 +35,6 @@ function HomePage() {
     useEffect(() => {
         axios.get('http://localhost:1337/api/categories')
             .then((response) => {
-                console.log(response.data);
                 setCategories(response.data.data);
             })
             .catch((error) => {

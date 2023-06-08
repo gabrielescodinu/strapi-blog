@@ -26,7 +26,6 @@ function CategoryPage() {
 
         axios.get(apiUrl)
             .then((response) => {
-                console.log(response.data);
                 setArticles(response.data.data);
                 setPagination(response.data.meta.pagination);
             })
@@ -45,7 +44,6 @@ function CategoryPage() {
     useEffect(() => {
         axios.get('http://localhost:1337/api/categories')
             .then((response) => {
-                console.log(response.data);
                 setCategories(response.data.data);
             })
             .catch((error) => {
