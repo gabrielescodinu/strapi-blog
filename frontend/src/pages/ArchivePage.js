@@ -43,6 +43,7 @@ function ArchivePage() {
         setCurrentPage(newPage);
     }
 
+    // pagination
     const pagesToShow = 5;
     const pagesOffset = Math.floor(pagesToShow / 2);
 

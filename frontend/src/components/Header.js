@@ -5,15 +5,21 @@ import axios from 'axios';
 import { useEffect } from 'react';
 
 function Header() {
+    // menu and hamburger animation
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleHamburgerClick = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    const [search, setSearch] = useState("");
-    const [articles, setArticles] = useState([]);
+    const handleCloseMenu = () => {
+        if (isMenuOpen) {
+            setIsMenuOpen(false);
+        }
+    };
 
+    // search panel animation
+    const [search, setSearch] = useState("");
     const [isSearchOpen, setSearchOpen] = useState(false);
 
     const handleSearchClick = () => {
@@ -23,6 +29,13 @@ function Header() {
     const handleCloseClick = () => {
         setSearchOpen(false);
     };
+
+    const handleSearchChange = (e) => {
+        setSearch(e.target.value);
+    };
+
+    // articles
+    const [articles, setArticles] = useState([]);
 
     useEffect(() => {
         const fetchArticles = async () => {
@@ -41,10 +54,6 @@ function Header() {
         }
     }, [search]);
 
-    const handleSearchChange = (e) => {
-        setSearch(e.target.value);
-    };
-
     return (
         <header>
             {/* search panel */}
@@ -62,7 +71,7 @@ function Header() {
                         <div className='grid grid-cols-1 lg:grid-cols-3 gap-4'>
                             {articles.slice(0, 3).map((article) => (
                                 <div key={article.id} className='mt-4' onClick={handleCloseClick}>
-                                    <figure className="group">
+                                    <figure className="group" onClick={handleCloseMenu}>
                                         <Link to={`/article/${article.id}`}>
                                             <div className="group relative flex h-20 lg:h-40 items-end overflow-hidden shadow-lg">
                                                 <img
@@ -97,11 +106,10 @@ function Header() {
                 ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
             >
                 <ul className="space-y-8 text-base">
-                    <li><a  aria-label="Our product" title="Our product" className="font-medium tracking-wide text-[#FA2200] transition-colors duration-200 hover:text-[#FA2200]">Home</a></li>
-                    <li><a  aria-label="Our product" title="Our product" className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-[#FA2200]">Product</a></li>
-                    <li><a  aria-label="Our product" title="Our product" className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-[#FA2200]">Features</a></li>
-                    <li><a  aria-label="Product pricing" title="Product pricing" className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-[#FA2200]">Pricing</a></li>
-                    <li><a  aria-label="About us" title="About us" className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-[#FA2200]">About us</a></li>
+                    <li><Link to="/"><div aria-label="Our product" title="Our product" className="font-medium tracking-wide text-[#FA2200] transition-colors duration-200 hover:text-[#FA2200]">Home</div></Link></li>
+                    <li><Link to="/about"><div aria-label="Our product" title="Our product" className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-[#FA2200]">Product</div></Link></li>
+                    <li><Link to="/archive"><div aria-label="Our product" title="Our product" className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-[#FA2200]">Features</div></Link></li>
+                    <li><Link to="/privacy"><div aria-label="Product pricing" title="Product pricing" className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-[#FA2200]">Pricing</div></Link></li>
                 </ul>
                 <ul className="space-y-8 mt-8">
                     <li>
