@@ -57,7 +57,7 @@ function Header() {
     return (
         <header>
             {/* search panel */}
-            <div className={`-m-4 search-panel origin-bottom transform transition-transform duration-300 w-screen h-screen fixed bg-gray-400/[.95] z-40 flex flex-col justify-center lg:px-60 ${isSearchOpen ? 'translate-y-0' : 'translate-y-full'}`} >
+            <div className={`-m-8 search-panel origin-bottom transform transition-transform duration-300 w-screen h-screen fixed bg-gray-400/[.95] z-40 flex flex-col justify-center lg:px-60 ${isSearchOpen ? 'translate-y-0' : 'translate-y-full'}`} >
                 <div className="w-full h-full absolute text-center" onClick={handleCloseClick} ></div>
                 <form className="max-w-screen-xl px-4 sm:px-6 z-50 mx-auto w-full">
                     <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
@@ -102,7 +102,7 @@ function Header() {
             {/* mobile menu */}
             <div
                 id="menu-mobile"
-                className={`menu-mobile-class -m-4 p-8 fixed w-screen h-screen bg-gray-800/[.85] z-20 transform transition-transform duration-300 flex flex-col justify-center 
+                className={`menu-mobile-class -m-8 p-8 fixed w-screen h-screen bg-gray-800/[.85] z-20 transform transition-transform duration-300 flex flex-col justify-center 
                 ${isMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
             >
                 <ul className="space-y-8 text-base">

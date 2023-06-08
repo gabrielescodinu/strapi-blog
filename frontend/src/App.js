@@ -11,7 +11,7 @@ import './App.css';
 function App() {
   return (
     <Router>
-      <div className='bg-gray-300 p-4'>
+      <div className='bg-gray-300 p-8'>
         <ScrollTop />
         <Header />
         <Switch>
