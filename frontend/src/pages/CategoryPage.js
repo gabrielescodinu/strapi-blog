@@ -83,11 +83,11 @@ function CategoryPage() {
                                     </div>
                                 </li>
                                 {categories.map((category) => (
-                                    <li key={category.id}>
+                                    <li key={category.id} className='cursor-pointer'>
                                         <Link to={`/category/${category.id}`}>
                                             <div
                                                 onClick={() => handleCategoryChange(category.id)}
-                                                className={`cursor-pointer inline-block px-6 py-4 border-b border-gray-400 hover:shadow-lg duration-150 ${categoryId === category.id ? 'text-[#FA2200] shadow-lg border-b !border-[#FA2200]' : ''
+                                                className={`inline-block px-6 py-4 border-b border-gray-400 hover:shadow-lg duration-150 ${categoryId === category.id ? 'text-[#FA2200] shadow-lg border-b !border-[#FA2200]' : ''
                                                     }`}
                                             >
                                                 {category.attributes.Title}
