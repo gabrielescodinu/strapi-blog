@@ -31,12 +31,12 @@ function Footer() {
                             </Link>
                         </li>
                         <li className="inline-block relative pr-8 last:pr-0 last-of-type:before:hidden before:absolute before:top-1/2 before:right-3 before:-translate-y-1/2 before:content-['/'] before:text-gray-300 dark:before:text-gray-600">
-                            <Link to="/about">
+                            <Link to="/page/about-us">
                                 <div className="inline-flex gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-gray-500 dark:hover:text-[#FA2200]" > About </div>
                             </Link>
                         </li>
                         <li className="inline-block relative pr-8 last:pr-0 last-of-type:before:hidden before:absolute before:top-1/2 before:right-3 before:-translate-y-1/2 before:content-['/'] before:text-gray-300 dark:before:text-gray-600">
-                            <Link to="/privacy">
+                            <Link to="/page/privacy">
                                 <div className="inline-flex gap-x-2 text-sm text-gray-500 hover:text-gray-800 dark:text-gray-500 dark:hover:text-[#FA2200]" > Privacy </div>
                             </Link>
                         </li>

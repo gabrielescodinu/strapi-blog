@@ -16,7 +16,7 @@ function SingleDefaultPage({ match }) {
 
     useEffect(() => {
         Promise.all([
-            axios.get(`http://localhost:1337/api/pages?permalink=${permalink}&populate=*`),
+            axios.get(`http://localhost:1337/api/pages?populate=*&filters[permalink]=${permalink}`),
             axios.get('http://localhost:1337/api/articolos/?populate=*&sort=publishedAt:DESC')
         ])
             .then(([articleResponse, articlesResponse]) => {
