@@ -32,3 +32,24 @@
     margin-bottom: 1.5rem;
     margin-top: 1.5rem;
 }
+
+.article-content ol {
+    list-style-type: decimal;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.article-content img {
+    margin: 1.5rem auto;
+}
+
+.article-content blockquote {
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    border-left: 0.2rem solid #FA2200;
+}
+
+.article-content a {
+    color: #FA2200;
+}
