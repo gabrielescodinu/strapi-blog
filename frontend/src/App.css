@@ -47,9 +47,23 @@
 .article-content blockquote {
     margin: 1.5rem auto;
     padding: 1.5rem;
-    border-left: 0.2rem solid #FA2200;
+    border-left: 0.25rem solid #FA2200;
+    font-style: italic;
 }
 
 .article-content a {
     color: #FA2200;
+}
+
+.article-content a:hover {
+    color: #FA2200;
+    text-decoration: underline;
+}
+
+.article-content p {
+    margin: 1.5rem auto;
+}
+
+.article-content blockquote p {
+    margin: initial;
 }

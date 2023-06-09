@@ -19,7 +19,7 @@ function CategoryPage() {
 
 
     useEffect(() => {
-        let apiUrl = `http://localhost:1337/api/articolos?populate=*&pagination[page]=${currentPage}&pagination[pageSize]=${articlesPerPage}`;
+        let apiUrl = `http://localhost:1337/api/articolos?populate=*&pagination[page]=${currentPage}&pagination[pageSize]=${articlesPerPage}&sort=publishedAt:DESC`;
 
         if (categoryId) {
             apiUrl += `&filters[category][id]=${categoryId}`;

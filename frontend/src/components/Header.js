@@ -67,7 +67,7 @@ function Header() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
                             </svg>
                         </div>
-                        <input type="text" value={search} onChange={handleSearchChange} id="default-search" className="block w-full p-4 pl-10 text-sm text-gray-700 border-none shadow-2xl bg-gray-200/[.85] focus:ring-transparent focus:border-transparent" placeholder="" required />
+                        <input type="text" value={search} onChange={handleSearchChange} id="default-search" className="block w-full p-4 pl-10 text-sm text-gray-700 border-none shadow-2xl bg-gray-200/[.85] focus:outline-none focus:!ring-transparent focus:!border-transparent" placeholder="" required />
                         <div className='grid grid-cols-1 lg:grid-cols-3 gap-4'>
                             {articles.slice(0, 3).map((article) => (
                                 <div key={article.id} className='mt-4' onClick={handleCloseClick}>
