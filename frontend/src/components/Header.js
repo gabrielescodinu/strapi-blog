@@ -108,7 +108,7 @@ function Header() {
             >
                 <ul className="space-y-8 text-base">
                     <li><Link to="/"><div aria-label="Our product" title="Our product" className="font-medium tracking-wide text-[#FA2200] transition-colors duration-200 hover:text-[#FA2200]">Home</div></Link></li>
-                    <li><Link to="/about"><div aria-label="Our product" title="Our product" className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-[#FA2200]">Product</div></Link></li>
+                    <li><Link to="/page/about-us"><div aria-label="Our product" title="Our product" className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-[#FA2200]">Product</div></Link></li>
                     <li><Link to="/categories"><div aria-label="Our product" title="Our product" className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-[#FA2200]">Features</div></Link></li>
                     <li><Link to="/privacy"><div aria-label="Product pricing" title="Product pricing" className="font-medium tracking-wide text-gray-100 transition-colors duration-200 hover:text-[#FA2200]">Pricing</div></Link></li>
                 </ul>
@@ -141,7 +141,7 @@ function Header() {
                         </Link>
                         <ul className="items-center hidden space-x-8 lg:flex text-base">
                             <li><div aria-label="Our product" title="Our product" className="font-medium tracking-wide text-[#FA2200] transition-colors duration-200 hover:text-[#FA2200]"><Link to="/">Home</Link></div></li>
-                            <li><div aria-label="Our product" title="Our product" className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-[#FA2200]"><Link to="/about">About</Link></div></li>
+                            <li><div aria-label="Our product" title="Our product" className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-[#FA2200]"><Link to="/page/about-us">About</Link></div></li>
                             <li><div aria-label="Our product" title="Our product" className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-[#FA2200]"><Link to="/categories">Archive</Link></div></li>
                             <li><div aria-label="Our product" title="Our product" className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-[#FA2200]"><Link to="/privacy">Privacy</Link></div></li>
                         </ul>

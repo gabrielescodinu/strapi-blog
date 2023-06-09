@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import CategoryPage from './pages/CategoryPage';
 import SingleArticlePage from './pages/SingleArticlePage';
+import SingleDefaultPage from './pages/SingleDefaultPage';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollTop from './components/ScrollTop';
@@ -17,6 +18,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/article/:id" component={SingleArticlePage} />
+          <Route path="/page/:permalink" component={SingleDefaultPage} />
           <Route path="/category/:id" component={CategoryPage} />
           <Route path="/categories" component={CategoryPage} />
         </Switch>
