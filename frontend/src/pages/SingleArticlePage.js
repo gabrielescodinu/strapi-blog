@@ -79,11 +79,11 @@ function ArticlePage() {
                         </div>
                     </div>
                     
-                    {/* correlated */}
+                    {/* Latest Articles */}
                     <section className="flex items-center w-full">
                         <div className="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-20 max-w-7xl">
                             <div>
-                                <p className="font-bold text-3xl text-gray-800 text-center"> Correlated Articles </p>
+                                <p className="font-bold text-3xl text-gray-800 text-center"> Latest Articles </p>
                             </div>
                             <div className="grid grid-cols-1 gap-6 py-12 md:grid-cols-3">
                                 {articles.filter((item) => item.id !== article.id).slice(0, 3).map((item) => (

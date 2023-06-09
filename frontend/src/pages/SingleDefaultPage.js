@@ -11,7 +11,7 @@ function SingleDefaultPage({ match }) {
     AOS.init();
     AOS.refresh();
 
-    const [article, setArticle] = useState(null);
+    const [page, setPage] = useState(null);
     const [articles, setArticles] = useState([]);
 
     useEffect(() => {
@@ -20,7 +20,7 @@ function SingleDefaultPage({ match }) {
             axios.get('http://localhost:1337/api/articolos/?populate=*&sort=publishedAt:DESC')
         ])
             .then(([articleResponse, articlesResponse]) => {
-                setArticle(articleResponse.data.data[0]);  // assuming Strapi returns an array
+                setPage(articleResponse.data.data[0]);
                 setArticles(articlesResponse.data.data);
             })
             .catch((error) => {
@@ -30,25 +30,25 @@ function SingleDefaultPage({ match }) {
 
     return (
         <div data-aos="fade-up">
-            {article && (
+            {page && (
                 <>
                     {/* content */}
                     <div className='pt-32'>
                         <div className="mx-auto max-w-screen-lg px-4 md:px-8 mt-4 article-content">
-                            <p className="font-bold text-3xl lg:text-4xl text-gray-800 text-center"> {article.attributes.Title} </p>
+                            <p className="font-bold text-3xl lg:text-4xl text-gray-800 text-center"> {page.attributes.Title} </p>
 
-                            <ReactMarkdown>{article.attributes.Content}</ReactMarkdown>
+                            <ReactMarkdown>{page.attributes.Content}</ReactMarkdown>
                         </div>
                     </div>
 
-                    {/* correlated */}
+                    {/* Latest Articles */}
                     <section className="flex items-center w-full">
                         <div className="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-20 max-w-7xl">
                             <div>
                                 <p className="font-bold text-3xl text-gray-800 text-center"> Latest Articles </p>
                             </div>
                             <div className="grid grid-cols-1 gap-6 py-12 md:grid-cols-3">
-                                {articles.filter((item) => item.id !== article.id).slice(0, 3).map((item) => (
+                                {articles.slice(0, 3).map((item) => (
                                     <ArticleCard article={item} />
                                 ))}
                             </div>
