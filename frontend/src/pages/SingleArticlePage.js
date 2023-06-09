@@ -28,11 +28,11 @@ function ArticlePage() {
             });
     }, [id]);
 
-
     return (
         <div data-aos="fade-up">
             {article && (
                 <>
+                    {/* hero */}
                     <section>
                         <div className="flex flex-col justify-center pt-32 relative">
                             <section>
@@ -53,6 +53,7 @@ function ArticlePage() {
                                                     <div className="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8">
                                                         <div className="max-w-2xl p-10 mx-auto text-center">
                                                             <div>
+                                                                <p className="inline-block mb-4 text-xs font-semibold tracking-wider text-[#FA2200] uppercase"> {article.attributes.category?.data?.attributes?.Title || ''} </p>
                                                                 <p className="font-bold text-3xl lg:text-4xl text-gray-100"> {article.attributes.Title} </p>
                                                                 <p className="max-w-xl mt-4 text-lg tracking-tight text-gray-300"> {article.attributes.Description} </p>
                                                             </div>
@@ -69,12 +70,14 @@ function ArticlePage() {
                             }}></div>
                         </div>
                     </section>
+
+                    {/* content */}
                     <div>
                         <div className="mx-auto max-w-screen-lg px-4 md:px-8 mt-4 article-content">
                             <ReactMarkdown>{article.attributes.Content}</ReactMarkdown>
                         </div>
                     </div>
-
+                    
                     {/* correlated */}
                     <section className="flex items-center w-full">
                         <div className="relative items-center w-full px-5 py-12 mx-auto md:px-12 lg:px-20 max-w-7xl">
@@ -119,8 +122,6 @@ function ArticlePage() {
                     </section>
                 </>
             )}
-
-
         </div>
     );
 }

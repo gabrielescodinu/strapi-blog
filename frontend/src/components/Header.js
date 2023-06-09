@@ -99,6 +99,7 @@ function Header() {
                     </div>
                 </form>
             </div>
+            
             {/* mobile menu */}
             <div
                 id="menu-mobile"
@@ -117,6 +118,7 @@ function Header() {
                     </li>
                 </ul>
             </div>
+
             {/* desktop menu */}
             <nav>
                 <nav className="z-30 relative max-w-screen-xl  mx-auto text-gray-500 md:px-8">

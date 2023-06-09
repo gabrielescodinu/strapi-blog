@@ -132,6 +132,7 @@ function CategoryPage() {
                     </div>
                 </div>
             </section>
+            
             {/* pagination */}
             <section className="mx-auto w-fit">
                 <div className="items-center px-8 mx-auto lg:px-16 md:px-12">
